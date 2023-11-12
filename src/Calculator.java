@@ -59,6 +59,13 @@ public class Calculator
         return gp;
     }
 
+    public int calcTotalUnits()
+    {
+        int total = 0;
+        for (var c : courses) { total += c.getUnits(); }
+        return total;
+    }
+
     public String toString()
     {
         var str = String.format("%-9s %-6s %-6s %s", "Code", "Units", "Mark", "Weight");

@@ -53,7 +53,7 @@ public class App
         var selection = 1;
         while (selection != 0)
         {
-            System.out.println("\nCalculate WAM [1] | Calculate GPA [2] | Exit [0]");
+            System.out.println("\nCalculate WAM [1] | Calculate GPA [2] | Calculate Both [3] | Exit [0]");
             System.out.print("Enter your selection: ");
             selection = sc.nextInt();
             System.out.println();
@@ -61,10 +61,17 @@ public class App
             {
                 case 1: runWAM(sc); break;
                 case 2: runGPA();   break;
+                case 3: runAll(sc); break;
                 case 0: break;
                 default: System.out.println("Invalid selection");
             }
         } sc.close();
+    }
+
+    private void runAll(Scanner sc)
+    {
+        this.runWAM(sc);
+        this.runGPA();
     }
 
     private void runWAM(Scanner sc)
@@ -78,6 +85,7 @@ public class App
     private void runGPA()
     {
         var gpa = calculator.calcGPA();
-        System.out.println(String.format("GPA: %2.2f", gpa));
+        var units = calculator.calcTotalUnits();
+        System.out.println(String.format("GPA: %2.2f\nTotal Units: %d", gpa, units));
     }
 }
