@@ -3,7 +3,7 @@ This is a program to calculate the WAM and GPA of a UoN degree based off provide
 
 To run the program, a file containing all your relavent course data (see format below) must be passed in via command line arguments. After compilation using `javac App.java`, the program can be run using `java App input.txt`. (the name/path of the input file can be changed)
 
-If using VS Code, the project can simply be run from the debugger. As a pre-requsuite for this, the course data file should be placed into a folder called `dat`, with the name `courses.txt` (i.e., `dat/courses.txt`)
+If using VS Code, the project can simply be run from the debugger. As a pre-requsuite for this, the course data file should be placed into a folder called `dat`, with the name `input.txt` (i.e., `dat/input.txt`)
 
 ## Course Data Format
 The data required for each course will be:
