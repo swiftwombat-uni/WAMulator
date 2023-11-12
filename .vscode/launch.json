@@ -9,7 +9,7 @@
             "name": "Launch App",
             "request": "launch",
             "mainClass": "App",
-            "args": [ "dat/courses.txt" ]
+            "args": [ "dat/input.txt" ]
         }
     ]
 }
