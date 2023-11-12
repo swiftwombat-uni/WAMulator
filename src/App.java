@@ -11,10 +11,12 @@ import java.util.Scanner;
 public class App
 {
     private Calculator calculator;
+    private int totalUnits;
 
     public App()
     {
         this.calculator = new Calculator();
+        this.totalUnits = 0;
     }
 
     public static void main(String[] args)
@@ -45,6 +47,7 @@ public class App
         var unit = sc.nextInt();
         var mark = sc.nextInt();
         courses.add(new Course(code, unit, mark));
+        totalUnits += unit;
     }
 
     private void run()
@@ -85,7 +88,6 @@ public class App
     private void runGPA()
     {
         var gpa = calculator.calcGPA();
-        var units = calculator.calcTotalUnits();
-        System.out.println(String.format("GPA: %2.2f\nTotal Units: %d", gpa, units));
+        System.out.println(String.format("GPA: %2.2f\nTotal Units: %d", gpa, totalUnits));
     }
 }

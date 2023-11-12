@@ -10,14 +10,17 @@ import java.util.List;
 public class Calculator
 {
     private List<Course> courses;
+    private float gpa;
 
     public Calculator()
     {
         this.courses = new ArrayList<Course>();
+        this.gpa = -1;
     }
 
     public Calculator(ArrayList<Course> courses)
     {
+        this();
         this.courses = courses;
     }
 
@@ -37,13 +40,15 @@ public class Calculator
 
     public float calcGPA()
     {
+        if (this.gpa > -1) { return gpa; }
         float x = 0.0f, y = 0.0f;
         for (var c : courses)
         {
             x += calcGradePoint(c.getMark()) * c.getUnits();
             y += c.getUnits();
         }
-        return x / y;
+        this.gpa = x / y;
+        return this.gpa;
     }
 
     private int calcGradePoint(int mark)
@@ -57,13 +62,6 @@ public class Calculator
             break;
         }
         return gp;
-    }
-
-    public int calcTotalUnits()
-    {
-        int total = 0;
-        for (var c : courses) { total += c.getUnits(); }
-        return total;
     }
 
     public String toString()
