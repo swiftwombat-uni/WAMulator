@@ -11,6 +11,7 @@ import java.util.Scanner;
 public class App
 {
     private Calculator calculator;
+    private String filepath;
     private int totalUnits;
 
     public App()
@@ -21,14 +22,15 @@ public class App
 
     public static void main(String[] args)
     {
+        if (args.length == 0) { return; }
         var me = new App();
-        me.init(new File(args[0]));
+        me.filepath = args[0];
         me.run();
     }
 
-    private void init(File f)
+    private void init()
     {
-        try (var sc = new Scanner(f))
+        try (var sc = new Scanner(new File(filepath)))
         {
             var courses = new ArrayList<Course>();
             while (sc.hasNext()) { this.addCourse(sc, courses); }
@@ -60,6 +62,7 @@ public class App
             System.out.print("Enter your selection: ");
             selection = sc.nextInt();
             System.out.println();
+            this.init();
             switch (selection)
             {
                 case 1: runWAM(sc); break;
