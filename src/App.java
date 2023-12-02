@@ -3,7 +3,10 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
- * Access point for the application.
+ * Access point for the application. The app is interacted with by
+ * selecting an option from the printed menu. Each time a selection
+ * is made the input file is re-read to update the calculators course
+ * data list.
  *
  * @author Zachary Cockshutt
  * @since  2023-11-12
@@ -28,6 +31,11 @@ public class App
         me.run();
     }
 
+    /**
+     * Initialises the WAMulator by reading from the input file. Once
+     * read, a new calculator is initialised with the course list. The
+     * reader assumes a specific format (described in the README.md)
+     */
     private void init()
     {
         try (var sc = new Scanner(new File(filepath)))
@@ -43,6 +51,14 @@ public class App
         }
     }
 
+    /**
+     * Helper function to parse a course input string and map it to
+     * the course class data. Once initialised it is then added to the
+     * referenced course list.
+     *
+     * @param sc The file scanner through which to parse the data.
+     * @param courses The course list reference to add the new course to.
+     */
     private void addCourse(Scanner sc, ArrayList<Course> courses)
     {
         var code = sc.next();
@@ -52,6 +68,12 @@ public class App
         totalUnits += unit;
     }
 
+    /**
+     * Implements the runtime loop. Each loop, the menu is printed and
+     * a selection is awaited for user input. Once made, the input file
+     * os read and the relevent calculations are made. This loop can be
+     * exited by selecting the [0] option.
+     */
     private void run()
     {
         var sc = new Scanner(System.in);
