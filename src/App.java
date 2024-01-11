@@ -40,6 +40,7 @@ public class App
     {
         try (var sc = new Scanner(new File(filepath)))
         {
+            this.totalUnits = 0;
             var courses = new ArrayList<Course>();
             while (sc.hasNext()) { this.addCourse(sc, courses); }
             this.calculator = new Calculator(courses);
